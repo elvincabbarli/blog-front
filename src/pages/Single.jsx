@@ -7,7 +7,6 @@ import axios from "axios";
 import moment from "moment";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
-import DOMPurify from "dompurify";
 
 const Single = () => {
   const [post, setPost] = useState({});
