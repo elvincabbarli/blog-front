@@ -8,12 +8,12 @@ export const AuthContextProvider = ({ children }) => {
     const [currentUser, setCurrentUSer] = useState(JSON.parse(localStorage.getItem('user')) || null)
 
     const login = async (inputs) => {
-        const res = await axios.post('http://localhost:8000/api/auth/login', inputs)
+        const res = await axios.post('https://node-blog-wxtc.onrender.com/api/auth/login', inputs)
         setCurrentUSer(res.data)
     }
 
     const logout = async () => {
-        await axios.post('http://localhost:8000/api/auth/logout')
+        await axios.post('https://node-blog-wxtc.onrender.com/api/auth/logout')
         setCurrentUSer(null)
     }
 
