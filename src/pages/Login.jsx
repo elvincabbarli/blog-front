@@ -1,19 +1,19 @@
-import React, { useContext, useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Authcontext } from "../context/authState";
-
+import { AuthContext } from "../context/authContext";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
   });
+  const [err, setError] = useState(null);
 
-  const { login, currentUser } = useContext(Authcontext)
-  console.log(currentUser)
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-  const [err, setError] = useState(null)
+  const { login } = useContext(AuthContext);
 
 
   const handleChange = (e) => {
@@ -23,10 +23,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(inputs);
-      navigate('/')
+      await login(inputs)
+      navigate("/");
     } catch (err) {
-      setError(err.response.data)
+      setError(err.response.data);
     }
   };
   return (
